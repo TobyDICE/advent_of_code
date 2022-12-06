@@ -1,4 +1,4 @@
-f = open("day6.txt", "r")
+f = open("../inputs/day6.txt", "r")
 
 raw_signal = ''.join(f)
 

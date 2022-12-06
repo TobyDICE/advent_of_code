@@ -3,7 +3,7 @@ import numpy as np
 # Will formulate the problem as 9 lists. Left to right is bottom to top.
 
 # Read in crate data:
-f = open("day5.txt", "r")
+f = open("../inputs/day5.txt", "r")
 
 crates_raw = [line.strip('\n') for line in f][:8]
 
@@ -28,7 +28,7 @@ crates
 
 
 # Read in and clean up instructions:
-f = open("day5.txt", "r")
+f = open("../inputs/day5.txt", "r")
 instructions = [line.strip('\n') for line in f][10:]
 
 def clean_instruction_line(instruction_line):

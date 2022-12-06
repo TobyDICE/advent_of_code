@@ -14,7 +14,7 @@ def convert_allocations_to_lists(allocation):
     return list(range(int(range_start), int(range_end)+1, 1))
 
 
-f = open("day4.txt", "r")
+f = open("../inputs/day4.txt", "r")
 allocations = [line.strip('\n') for line in f]
 
 answer1 = sum(

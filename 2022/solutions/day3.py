@@ -1,5 +1,5 @@
 import numpy as np
-f = open("day3.txt", "r")
+f = open("../inputs/day3.txt", "r")
 
 
 bags = [line.strip('\n') for line in f]
@@ -60,6 +60,7 @@ answer1 = sum([alphabet_scores[common_item(
     half_string(bag)[1]
 )] for bag in bags])
 
+print(answer1)
 
 # part 2:
 
@@ -73,3 +74,4 @@ badges = [common_items_3way(
 ) for grouping in elf_groupings]
 
 answer2 = sum([alphabet_scores[badge] for badge in badges])
+print(answer2)

@@ -1,4 +1,4 @@
-f = open("day2.txt", "r")
+f = open("../inputs/day2.txt", "r")
 
 
 strategy = [line.strip('\n') for line in f]
