@@ -67,9 +67,43 @@ def calculate_min_steps_needed(start, end, map):
     while not reached[end]:
         update_reachable_per_step()
 
-    return list(reachable_per_step.keys())[0]
+    return list(reachable_per_step.keys())[0] - 1
 
 calculate_min_steps_needed(start, end, contours)
 print(f'Part 1: {calculate_min_steps_needed(start, end, contours)}')
 
+# Part 2
+# I'll invert the map, start at the end point, and see how quickly we can 
+# get to any of the original start points
+
+contours_inverted = 25 - contours
+start_p2 = end
+
+
+reached = np.zeros(contours.shape)
+reached[start_p2] = 1
+
+reachable_per_step = {
+    0: [start_p2]
+    }
+
+def update_reachable_per_step():
+    to_iterate_from = max(reachable_per_step.keys())
+    reachable_per_step[to_iterate_from+1] = []
+    for location in reachable_per_step[to_iterate_from]:
+        if contours_inverted[tuple(location)] == 25:
+            return to_iterate_from
+        if reached[tuple(location)] != 1:
+            reached[tuple(location)] = 1
+        reachable = return_list_of_reachable_points(location, contours_inverted)
+        # print(reachable)
+        reachable = [loc for loc in reachable if not reached[tuple(loc)] ]
+        reachable_per_step[to_iterate_from+1] += [i for i in reachable if i not in reachable_per_step[to_iterate_from+1]]
+    del reachable_per_step[to_iterate_from]
+
+answer = []
+for i in range(450):
+    answer.append(update_reachable_per_step())
+
+print(f'Part 2: {[i for i in answer if i][0]}')
 
