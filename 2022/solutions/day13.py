@@ -23,14 +23,11 @@ def is_pair_correctly_ordered(signal1, signal2):
     if type(signal1) == type(signal2) == list:
         s1_length = len(signal1)
         s2_length = len(signal2)
-        results = []
-        for i in range(min(s1_length, s2_length)):
-            res = is_pair_correctly_ordered(signal1[i], signal2[i]) 
+        for pair in zip(signal1, signal2):
+            res = is_pair_correctly_ordered(pair[0], pair[1]) 
             if res in [True, False]:
                 return res
-
-            
-            
+                
         if s1_length < s2_length:
             return True
 
